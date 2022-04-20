@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ethers } from "ethers";
 
 function WalletBalance() {
@@ -12,18 +12,6 @@ function WalletBalance() {
     const balance = await provider.getBalance(account);
     setBalance(ethers.utils.formatEther(balance));
   };
-
-  useEffect(() => {
-    // GET request using fetch inside useEffect React hook
-    fetch(
-      "https://gateway.pinata.cloud/ipfs/QmXPjJb1yF6CJ64iWmw6GfjcmongHv8nLuD5D821PsoEBw/0.json"
-    )
-      .then((response) => response.json())
-      .then((data) => setTotalReactPackages(data.total))
-      .then((data) => console.log(data));
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
 
   return (
     <div className="walletContainer ">
